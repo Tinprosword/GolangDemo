@@ -10,48 +10,48 @@ import (
 )
 
 type clientRequest struct {
-	message string
+	message    string
 	playerName string
-	timestamp int64
+	timestamp  int64
 }
 
 type serverResponse struct {
-	message string
+	message    string
 	playerName string
-	timestamp int64
-	gameId int64
+	timestamp  int64
+	gameId     int64
 }
 
 type guessMessage struct {
-	message string
-	guess int
+	message   string
+	guess     int
 	timestamp int64
-	gameId int64
+	gameId    int64
 }
 
 type guessResult struct {
-	message string
+	message     string
 	guessResult int
-	timestamp int64
-	gameId int64
+	timestamp   int64
+	gameId      int64
 }
 
 type winMessage struct {
 	message string
-	answer int
-	winner string
-	gameId int64
+	answer  int
+	winner  string
+	gameId  int64
 }
 
 type gameStartMessage struct {
-	message string
+	message   string
 	timestamp int64
-	gameId int64
+	gameId    int64
 }
 
 type errorMessage struct {
-	message string
-	reason string
+	message   string
+	reason    string
 	timestamp int64
 }
 
@@ -68,10 +68,10 @@ func main() {
 		fmt.Println(connErr)
 		return
 	} else {
-		fmt.Println(conn.)
+		fmt.Println(conn)
 	}
 
-	for {		
+	for {
 		//guesting answer
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Please enter the number :\n")

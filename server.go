@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
 	"math/rand"
 	"net"
@@ -10,7 +9,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"encoding/json"
 )
 
 var count = 0
@@ -35,13 +33,14 @@ func handleConnection(c net.Conn) {
 	c.Close()
 }
 
-func gameStart(message string) {
-	message := json {
-		message:	message,
-		timestamp:	time.Now().Unix(),
-		gameId: 1
-	}
-}
+// func gameStart(message string) {
+// 	message := json {
+// 		message:	message,
+// 		timestamp:	time.Now().Unix(),
+// 		gameId: 1
+// 	}
+// }
+
 func main() {
 	arguments := os.Args
 	if len(arguments) == 1 {
