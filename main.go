@@ -35,6 +35,7 @@ func main() {
 	for {
 		var playerName string
 		var answer uint
+		var userInput int
 		var playerId = rand.Int()
 		var playerIndex int
 		var gameTimestamp = time.Now().UTC().UnixNano()
@@ -52,6 +53,7 @@ func main() {
 
 		if !validatePlayer(playerName) {
 			fmt.Println("The name is invalid, please try again.")
+			continue
 		}
 		player.PlayerName = playerName
 		Players = append(Players, player)
@@ -62,14 +64,18 @@ func main() {
 		fmt.Printf("Welcome %v, please guess the number between %v and %v.\n", playerName, MinAnswerRange, MaxAnswerRange)
 		for {
 			// wait user to input answer
-			fmt.Scan(&answer)
+			fmt.Scan(&userInput)
 			// scanner.Scan()
 			// t := scanner.Text()
 			// answer = uint(t)
-
-			if !validateAnswer(answer) {
+			var isValidAnswer = validateAnswer(userInput)
+			if !isValidAnswer {
 				fmt.Println("The answer is invalid, please try again.")
+				continue
+			} else {
+				answer = uint(userInput)
 			}
+			// fmt.Println("=======================")
 			player.Answer = answer
 			Players[playerIndex].Answer = answer
 
@@ -105,10 +111,10 @@ func validatePlayer(player string) bool {
 	return true
 }
 
-func validateAnswer(answer uint) bool {
-	if answer < MinAnswerRange {
+func validateAnswer(answer int) bool {
+	if answer < int(MinAnswerRange) {
 		return false
-	} else if answer > MaxAnswerRange {
+	} else if answer > int(MaxAnswerRange) {
 		return false
 	}
 	return true
